@@ -1,0 +1,19 @@
+package chap06.section1.customproperty
+
+class User(_id: Int, _name: String, _age: Int) {
+    val id: Int = _id
+    private var tempName: String? = null
+    var name: String = _name
+        get() {
+            if (tempName == null) tempName = "NONAME"
+            return tempName ?: throw AssertionError("Asserted by others")
+            //?: not null일 경우 tempNmae을 할당하고 null일 경우 우측 에러
+        }
+    var age: Int = _age
+}
+
+fun main() {
+    val user1 = User(1, "kildong", 35)
+    //user1.name = ""
+    println("user3.name=${user1.name}")
+}
